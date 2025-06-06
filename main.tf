@@ -1,15 +1,27 @@
-provider "render" {
-  api_key = var.render_api_key
+terraform {
+  required_providers {
+    docker = {
+      source  = "kreuzwerker/docker"
+      version = "~> 3.0"
+    }
+  }
 }
 
-resource "render_service" "web" {
-  name        = "techcode-webapp"
-  type        = "web_service"
-  repo        = "https://github.com/filipalopescarvalho/techcode-webapp.git"
-  branch      = "main"
-  build_command = "npm install"
-  start_command = "npm start"
-  environment = "node"
+provider "docker" {}
 
-  plan = "starter"
+resource "docker_image" "techcode-webapp_image" {
+  name = "techcode-webapp:latest"
+  build {
+    context    = "../"   # Path to Dockerfile relative to terraform folder
+    dockerfile = "../Dockerfile"
+  }
+}
+
+resource "docker_container" "techcode-webapp" {
+  image = docker_image.techcode-webapp_image.latest
+  name  = "techcode-webapp_container"
+  ports {
+    internal = 3000
+    external = 3000
+  }
 }
