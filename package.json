@@ -1,0 +1,20 @@
+{
+    "name": "retail-logistics-app",
+    "version": "1.0.0",
+    "description": "Modular e-commerce platform for retail and logistics clients",
+    "main": "index.js",
+    "scripts": {
+      "start": "node index.js",
+      "test": "jest"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+      "express": "^4.18.2"
+    },
+    "devDependencies": {
+      "jest": "^29.7.0"
+    }
+  }
+  
