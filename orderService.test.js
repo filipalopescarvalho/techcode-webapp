@@ -18,7 +18,7 @@ describe('Order Service - calculateOrderTotal', () => {
       { itemId: 'item1', quantity: 3, pricePerUnit: 30 },
       { itemId: 'item2', quantity: 2, pricePerUnit: 40 },
     ];
-    expect(calculateOrderTotal(items, 10)).toBe(162); // 180 - 10%
+    expect(calculateOrderTotal(items, 10)).toBe(153); // 180 - 10%
   });
 
   test('throws error for invalid item data', () => {
