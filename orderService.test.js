@@ -1,4 +1,4 @@
-const { calculateOrderTotal } = require('../orderService');
+const { calculateOrderTotal } = require('./orderService');
 
 describe('Order Service - calculateOrderTotal', () => {
   test('returns 0 for empty item list', () => {
